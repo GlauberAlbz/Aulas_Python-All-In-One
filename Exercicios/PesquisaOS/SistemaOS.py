@@ -1,5 +1,8 @@
 '''
-    Autores: Glauber Almeida B. - Luis Henrique Nunes Calazans P.
+    Autores:
+    - Glauber Almeida de Brito
+    - Luis Henrique N. C. Pozenato
+    - Renato de Oliveira
     Turma: 2ºA DS               Data: 16/10/2025
 
     Fazer um programa com 3 etapas:
@@ -42,6 +45,8 @@ usuarios_cadastrados = []  # lista composta com [nome, senha]
 looplogin = True
 looppai = True
 
+
+# Luis - Login e Cadastro
 while looppai == True:
     while looplogin == True:
 
@@ -70,7 +75,7 @@ while looppai == True:
 
             if login_valido == False:
                 print(vermelho + "Usuário ou senha incorretos.")
-            sleep(1.5)
+            sleep(1)
             sys("cls")
 
         elif respostainicio == "2":
@@ -89,18 +94,18 @@ while looppai == True:
 
             if existe:
                 print(vermelho + "Usuário já cadastrado! Tente outro nome.")
-                sleep(1.5)
+                sleep(1)
                 sys("cls")
 
             else:
                 usuarios_cadastrados.append([username, senha])
                 print(verde + "Usuário cadastrado com sucesso!")
-                sleep(1.5)
+                sleep(1)
                 sys("cls")
 
         else:
             print(vermelho + "Opção inválida. Tente novamente.")
-            sleep(1.5)
+            sleep(1)
             sys("cls")
 
     sys("cls")
@@ -110,18 +115,15 @@ while looppai == True:
     loop_resultado = False
     participante = 1
     total_respostas = 0
-    sistemas = [['Windows', 0], ['Linux', 0], [
-        'MacOS', 0], ['Unix', 0], ['Outros', 0]]
+    sistemas = [['Windows', 0, 0], ['Linux', 0, 0], ['MacOS', 0, 0], ['Unix', 0, 0], ['Outros', 0, 0]]
     resposta = str()
 
     while loop_programa == True:
         sys('cls')
         print(ciano + negrito + '╔' + '═' * 73 + '╗')
-        print('║' + amarelo +
-              f'Participante {participante}'.center(73) + ciano + '║')
+        print('║' + amarelo + f'Participante {participante}'.center(73) + ciano + '║')
         print('╠' + '═' * 73 + '╣')
-        print('║' + branco +
-              'Qual o melhor Sistema Operacional em sua opinião?'.center(73) + ciano + '║')
+        print('║' + branco + 'Qual o melhor Sistema Operacional em sua opinião?'.center(73) + ciano + '║')
         print('║' + verde + '1 - Windows'.center(73) + ciano + '║')
         print('║' + verde + '2 - Linux'.center(73) + ciano + '║')
         print('║' + verde + '3 - MacOS'.center(73) + ciano + '║')
@@ -135,11 +137,9 @@ while looppai == True:
         while resposta != '1' and resposta != '2' and resposta != '3' and resposta != '4' and resposta != '5' and resposta != '0':
             sys('cls')
             print(ciano + negrito + '╔' + '═' * 73 + '╗')
-            print('║' + amarelo +
-                  f'Participante {participante}'.center(73) + ciano + '║')
+            print('║' + amarelo + f'Participante {participante}'.center(73) + ciano + '║')
             print('╠' + '═' * 73 + '╣')
-            print(
-                '║' + branco + 'Qual o melhor Sistema Operacional em sua opinião?'.center(73) + ciano + '║')
+            print('║' + branco + 'Qual o melhor Sistema Operacional em sua opinião?'.center(73) + ciano + '║')
             print('║' + verde + '1 - Windows'.center(73) + ciano + '║')
             print('║' + verde + '2 - Linux'.center(73) + ciano + '║')
             print('║' + verde + '3 - MacOS'.center(73) + ciano + '║')
@@ -171,63 +171,41 @@ while looppai == True:
             case '0':
                 loop_resultado = True
 
-                total_respostas = sistemas[0][1] + sistemas[1][1] + \
-                    sistemas[2][1] + sistemas[3][1] + sistemas[4][1]
+                total_respostas = sistemas[0][1] + sistemas[1][1] + sistemas[2][1] + sistemas[3][1] + sistemas[4][1]
 
                 if sistemas[0][1] != 0:
-                    sistemas[0].append(
-                        sistemas[0][1] / total_respostas * 100)  # Windows
-                else:
-                    sistemas[0].append(0)
+                    sistemas[0][2] = sistemas[0][1] / total_respostas * 100  # Windows
 
                 if sistemas[1][1] != 0:
-                    sistemas[1].append(
-                        sistemas[1][1] / total_respostas * 100)  # Linux
-                else:
-                    sistemas[1].append(0)
+                    sistemas[1][2] = sistemas[1][1] / total_respostas * 100  # Linux
 
                 if sistemas[2][1] != 0:
-                    sistemas[2].append(
-                        sistemas[2][1] / total_respostas * 100)  # MacOS
-                else:
-                    sistemas[2].append(0)
+                    sistemas[2][2] = sistemas[2][1] / total_respostas * 100  # MacOS
 
                 if sistemas[3][1] != 0:
-                    sistemas[3].append(
-                        sistemas[3][1] / total_respostas * 100)  # Unix
-                else:
-                    sistemas[3].append(0)
+                    sistemas[3][2] = sistemas[3][1] / total_respostas * 100  # Unix
 
                 if sistemas[4][1] != 0:
-                    sistemas[4].append(
-                        sistemas[4][1] / total_respostas * 100)  # Outros
-                else:
-                    sistemas[4].append(0)
+                    sistemas[4][2] = sistemas[4][1] / total_respostas * 100  # Outros
 
         while loop_resultado == True:
 
             if total_respostas == 0:
                 sys('cls')
                 print(ciano + negrito + '╔' + '═' * 73 + '╗')
-                print(
-                    '║' + vermelho + 'Não tem como fazer uma pesquisa com 0 participantes!'.center(73) + ciano + '║')
-                print('║' + branco +
-                      'Deseja tentar novamente? S/N:'.center(73) + ciano + '║')
+                print('║' + vermelho + 'Não tem como fazer uma pesquisa com 0 participantes!'.center(73) + ciano + '║')
+                print('║' + branco + 'Deseja tentar novamente? S/N:'.center(73) + ciano + '║')
                 print(ciano + '╚' + '═' * 73 + '╝' + reset)
-                sim_ou_nao = str(
-                    input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
+                sim_ou_nao = str(input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
 
                 while sim_ou_nao != 'S' and sim_ou_nao != 'N':
                     sys('cls')
                     print(ciano + negrito + '╔' + '═' * 73 + '╗')
-                    print(
-                        '║' + vermelho + 'Não tem como fazer uma pesquisa com 0 participantes!'.center(73) + ciano + '║')
-                    print(
-                        '║' + branco + 'Deseja tentar novamente? S/N:'.center(73) + ciano + '║')
+                    print('║' + vermelho + 'Não tem como fazer uma pesquisa com 0 participantes!'.center(73) + ciano + '║')
+                    print('║' + branco + 'Deseja tentar novamente? S/N:'.center(73) + ciano + '║')
                     print(ciano + '╚' + '═' * 73 + '╝' + reset)
                     print(vermelho + 'Digito Inválido! (S ou N)' + reset)
-                    sim_ou_nao = str(
-                        input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
+                    sim_ou_nao = str(input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
 
                 if sim_ou_nao == 'S':
                     loop_resultado = False
@@ -238,63 +216,48 @@ while looppai == True:
             else:
                 sys('cls')
                 print(ciano + negrito + '╔' + '═' * 73 + '╗')
-                print(
-                    '║' + amarelo + f"Total de participantes: {total_respostas}".center(73) + ciano + '║')
+                print('║' + amarelo + f"Total de participantes: {total_respostas}".center(73) + ciano + '║')
                 print(ciano + f"╠{'═'*73}╣")
-                print(
-                    '║' + verde + f"Windows {sistemas[0][1]} - {sistemas[0][2]:.1f}%".center(73) + ciano + '║')
-                print(
-                    '║' + verde + f"Linux {sistemas[1][1]} - {sistemas[1][2]:.1f}%".center(73) + ciano + '║')
-                print(
-                    '║' + verde + f"MacOS {sistemas[2][1]} - {sistemas[2][2]:.1f}%".center(73) + ciano + '║')
-                print(
-                    '║' + verde + f"Unix {sistemas[3][1]} - {sistemas[3][2]:.1f}%".center(73) + ciano + '║')
-                print(
-                    '║' + verde + f"Outros {sistemas[4][1]} - {sistemas[4][2]:.1f}%".center(73) + ciano + '║')
+                print('║' + verde + f"Windows {sistemas[0][1]} - {sistemas[0][2]:.1f}%".center(73) + ciano + '║')
+                print('║' + verde + f"Linux {sistemas[1][1]} - {sistemas[1][2]:.1f}%".center(73) + ciano + '║')
+                print('║' + verde + f"MacOS {sistemas[2][1]} - {sistemas[2][2]:.1f}%".center(73) + ciano + '║')
+                print('║' + verde + f"Unix {sistemas[3][1]} - {sistemas[3][2]:.1f}%".center(73) + ciano + '║')
+                print('║' + verde + f"Outros {sistemas[4][1]} - {sistemas[4][2]:.1f}%".center(73) + ciano + '║')
                 print('╠' + '═' * 73 + '╣')
-                print(
-                    '║' + verde + 'Deseja realizar uma nova pesquisa? S/N: '.center(73) + ciano + '║')
+                print('║' + verde + 'Deseja realizar uma nova pesquisa? S/N: '.center(73) + ciano + '║')
                 print(ciano + '╚' + '═' * 73 + '╝' + reset)
-                sim_ou_nao = str(
-                    input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
+                sim_ou_nao = str(input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
 
                 while sim_ou_nao != 'S' and sim_ou_nao != 'N':
                     sys('cls')
                     print(ciano + negrito + '╔' + '═' * 73 + '╗')
-                    print(
-                        '║' + amarelo + f"Total de participantes: {total_respostas}".center(73) + ciano + '║')
+                    print('║' + amarelo + f"Total de participantes: {total_respostas}".center(73) + ciano + '║')
                     print(ciano + f"╠{'═'*73}╣")
-                    print(
-                        '║' + verde + f"Windows {sistemas[0][1]} - {sistemas[0][2]:.1f}%".center(73) + ciano + '║')
-                    print(
-                        '║' + verde + f"Linux {sistemas[1][1]} - {sistemas[1][2]:.1f}%".center(73) + ciano + '║')
-                    print(
-                        '║' + verde + f"MacOS {sistemas[2][1]} - {sistemas[2][2]:.1f}%".center(73) + ciano + '║')
-                    print(
-                        '║' + verde + f"Unix {sistemas[3][1]} - {sistemas[3][2]:.1f}%".center(73) + ciano + '║')
-                    print(
-                        '║' + verde + f"Outros {sistemas[4][1]} - {sistemas[4][2]:.1f}%".center(73) + ciano + '║')
+                    print('║' + verde + f"Windows {sistemas[0][1]} - {sistemas[0][2]:.1f}%".center(73) + ciano + '║')
+                    print('║' + verde + f"Linux {sistemas[1][1]} - {sistemas[1][2]:.1f}%".center(73) + ciano + '║')
+                    print('║' + verde + f"MacOS {sistemas[2][1]} - {sistemas[2][2]:.1f}%".center(73) + ciano + '║')
+                    print('║' + verde + f"Unix {sistemas[3][1]} - {sistemas[3][2]:.1f}%".center(73) + ciano + '║')
+                    print('║' + verde + f"Outros {sistemas[4][1]} - {sistemas[4][2]:.1f}%".center(73) + ciano + '║')
                     print('╠' + '═' * 73 + '╣')
-                    print(
-                        '║' + verde + 'Deseja realizar uma nova pesquisa? S/N: '.center(73) + ciano + '║')
+                    print('║' + verde + 'Deseja realizar uma nova pesquisa? S/N: '.center(73) + ciano + '║')
                     print(ciano + '╚' + '═' * 73 + '╝' + reset)
                     print(vermelho + 'Digito Inválido! (S ou N)' + reset)
-                    sim_ou_nao = str(
-                        input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
+                    sim_ou_nao = str(input(amarelo + 'Digite a sua resposta: ' + reset)).strip().upper()
 
                 if sim_ou_nao == 'S':
                     loop_resultado = False
                     loop_programa = True
                     participante = 1
                     total_respostas = 0
-                    sistemas = [['Windows', 0], ['Linux', 0], [
-                        'MacOS', 0], ['Unix', 0], ['Outros', 0]]
+                    sistemas = [['Windows', 0, 0], ['Linux', 0, 0], ['MacOS', 0, 0], ['Unix', 0, 0], ['Outros', 0, 0]]
                     resposta = str()
                 else:
                     loop_programa = False
                     loop_resultado = False
 
+    # Renato - Tela de encerramento
     escolha = str()
+    sys('cls')
 
     while escolha != "1" and escolha != "2" and escolha != "3":
         print(ciano + negrito + '╔' + '═' * 73 + '╗')
@@ -324,10 +287,13 @@ print('╠' + '═' * 73 + '╣')
 print('║' + verde + 'Obrigado pela preferência!'.center(73) + ciano + '║')
 print('║' + ' ' * 73 + ciano + '║')
 print('║' + amarelo + 'Sistema de Login:'.center(73) + ciano + '║')
-print('║' + azul + 'Luis Pozenato'.center(73) + ciano + '║')
+print('║' + azul + 'Luis Henrique N. C. Pozenato'.center(73) + ciano + '║')
 print('║' + ' ' * 73 + ciano + '║')
 print('║' + amarelo + 'Programa de votação:'.center(73) + ciano + '║')
-print('║' + azul + 'Glauber Almeida Brito'.center(73) + ciano + '║')
+print('║' + azul + 'Glauber Almeida de Brito'.center(73) + ciano + '║')
+print('║' + ' ' * 73 + ciano + '║')
+print('║' + amarelo + 'Tela de encerramento:'.center(73) + ciano + '║')
+print('║' + azul + 'Renato de Oliveira'.center(73) + ciano + '║')
 print('║' + ' ' * 73 + ciano + '║')
 print('╚' + '═' * 73 + '╝' + reset)
 
